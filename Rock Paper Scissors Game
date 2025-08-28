@@ -1,0 +1,58 @@
+import random
+
+options=["rock","paper","scissors"]
+running = True
+player_score=0
+computer_score=0
+ties=0
+
+while running:
+    computer = random.choice(options)
+    player = None
+
+    while player not in options:
+        player = input("\nEnter your choice (rock,paper,scissors or 'quit' to stop):").lower().strip()
+
+        if player=="quit":
+            running=False
+            break
+
+    if not running:
+        break
+
+    print(f"player:{player}")
+    print(f"computer:{computer}")
+
+    if player == computer:
+        print("Its a tie!\n")
+        ties+=1
+
+    elif player == "rock" and computer == "scissors": 
+        print("You Win!\n")
+        player_score+=1
+
+    elif player == "paper" and computer == "rock":
+        print("You Win!\n")
+        player_score+=1
+
+    elif player == "scissors" and computer == "paper":
+        print('You Win!\n')
+        player_score+=1
+
+    else:
+        print("Computer Win!")
+        computer_score+=1
+
+print("\n---FINAL SCOREBOARD---")
+print(f"Player Wins : {player_score}")
+print(f"Computer Wins : {computer_score}")
+print(f"Ties : {ties}")
+
+if player_score>computer_score:
+    print("Yoy are the Overall Winner!")
+elif computer_score>player_score:
+    print("Computer Wins Overall!")
+else:
+    print("Its an Overall tie!")
+
+print("\nThanks for playing!")
